@@ -3,26 +3,37 @@ import ReactDOM from 'react-dom/client'
 import Home from './Home'
 import Create from './Create'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyle, { theme } from './theme'
+import GlobalStyle, { colors, theme } from './theme'
 import Details from './Details'
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Menu from './components/Menu'
+import { ConfigProvider } from 'antd';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <>
+      <Menu />
+      <Home />
+    </>,
   },
   {
     path: "/create",
-    element: <Create />,
+    element: <>
+      <Menu />
+      <Create />
+    </>,
   },
   {
     path: "/details",
-    element: <Details />,
+    element: <>
+      <Menu />
+      <Details />
+    </>,
   },
 ]);
 
@@ -30,8 +41,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <GlobalStyle />
-      <main style={{ width: '100%', height:'100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-        <RouterProvider router={router} />
+      <main style={{ width: '100%', minHeight:'100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: colors.primary,
+              colorPrimaryHover: colors.primaryLight,
+            },
+          }}
+        >
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </main>
     </ThemeProvider>
   </React.StrictMode>,
