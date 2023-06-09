@@ -3,7 +3,7 @@ This is the app for the assessment task in the hiring process of Amberflo. The p
 
 Install dependencies runing: `npm (or your favorite package manager) install`
 
-To run the projecto locally, first create a `.env.local` file with two env vars: `VITE_API_HOST=(url api)` & `VITE_API_KEY=(api key)`
+To run the project locally, first create a `.env.local` file with two env vars: `VITE_API_HOST=(url api)` & `VITE_API_KEY=(api key)`
 
 Then run dev with: `npm run dev`.
 
